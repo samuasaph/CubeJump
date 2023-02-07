@@ -1,16 +1,17 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<title>Cube Jump</title>
+	<meta charset="UTF-8" />
+	<title>jump game(NORMAL)</title>
+    <script src="sprite.js"></script>
 	<style>
-		body {background-color: black;}
+		body {background-color:yellow;}
 			h2    {color: white;}
 			li   {color: blue;}
 		canvas {
 			position: absolute;
 			top: 0px;
-			bottom: 0px;
+			bottom: 9px;
 			left: 0px;
 			right: 0px;
 			margin: auto;
@@ -18,23 +19,20 @@
 	</style>
 </head>
 <body>
-	<h1>Criado por Samuel Asaph</h1>
-	<h2>Meu nome é Samuel<br> e estou aprendendo<br> Desenolvimento web</p>
 	<script>
 		//variáveis do jogo
 		var canvas, ctx, ALTURA, LARGURA, frames = 0, maxPulos = 3, velocidade = 6,
 		estadoAtual, record, img,
-
-		estados = {
+ 		estados = {
 			jogar: 0,
 			jogando: 1,
 			perdeu: 2
 		},
 
 		chao = {
-			y: 550,
+			y: 750,
 			altura: 50,	
-			cor: "#78ff5d",
+			cor: "#ffdf70",
 
 			desenha: function()	{
 				ctx.fillStyle = this.cor;
@@ -43,18 +41,18 @@
 		},
 
 		bloco = {
-			x: 90,
-			y: 650,
+			x: 500,
+			y: 0,
 			altura:50,
 			largura: 50,
 			cor: "#ff9239",
 			gravidade: 1.6,
-			velocidade: 0,
-			forcaDoPulo: 25,
+			velocidade: 10,
+			forcaDoPulo: 23.9,
 			qntPulos: 0,
-			score: -3,
+			score: 0,
 
-			vidas: 45,
+			vidas: 54,
 			colidindo: false,
 
 			atualiza: function() {
@@ -84,8 +82,8 @@
 					record = this.score;
 				}
 
-				this.vidas = 45;
-				this.score = -3;
+				this.vidas = 54;
+				this.score = 0;
 			},
 
 			desenha: function() {
@@ -97,7 +95,7 @@
 		obstaculos = {
 			_obs: [],
 			cores: ["#ffbc1c", "#ff1c1c", "#ff85e1", "#52a7ff", "#78ff5d"],
-			tempoInsere: 0,
+			tempoInsere: 4,
 
 		insere: function() {
 			this._obs.push({
@@ -179,9 +177,9 @@
 			ALTURA = window.innerHeight;
 			LARGURA = window.innerWidth;
 
-			if (LARGURA >= 500) {
-				LARGURA = 600;
-				ALTURA = 600;
+			if (LARGURA >= 50000) {
+				LARGURA = 60000;
+				ALTURA = 60000;
 			}
 
 			canvas = document.createElement("canvas");
@@ -195,13 +193,13 @@
 			document.addEventListener("mousedown", clique);
 
 			estadoAtual = estados.jogar
-			record = localStorage.getItem("record");
+			record = localStorage.getItem("record"); 
 
 			if (record == null)
 				record = 0;
 
-			
-
+			img = new Image();
+			img.src = "sheet.png";
 
 			roda();
 		}
@@ -278,44 +276,5 @@
 		//inicializa o jogo
 		main();
 		</script>
-		<h1 style="color:white;">jogue nas outras<br> verções</h1>
-		<a href="Verção Alpha 0.1.html" target="blank">altha 1.0.1</a><br>
-		<a href="Verção betha 0.2.html" target="blank">beta 2.0.1</a><br><br><br><br><br><br><br><br>
-		<a href="e.html" target="blank">Calculadora </a><br>
-		<a href="p.html" target="blank">portifolio</a><br><br><br>
-		<a href="teste (2) - Copia.html" target="blank">Dificulty(easy)</a><br>
-		<a href="teste.html" target="blank">Dificulty(Normal)</a><br>
-		<a href="teste (2).html" target="blank">Dificulty(Hardcore)</a><br>
-		<a href="teste (2) - Copia - Copia.html" target="blank">Dificulty(Creative)</a><br>
-		<img src="satu.png" width="600" height="300" align="center">
-		<h1 style="color:blue;">Minhas atividades</h1>
-		<ol>
-			<li>
-				<a href="aula.html">aula</a><br>
-			</li>
-			<li>
-				<a href="aula12.html">aula</a><br>
-			</li>
-			<li>
-				<a href="Localização.html">aula</a><br>
-			</li>
-			<li>
-				<a href="w.htm">aula</a><br>
-			</li>
-			<li>
-				<a href="Love.htm">aula</a>
-			</li>
-			<li>
-				<a href="file:///C:/Users/Gl%C3%B3ria%20a%20Deus/Documents/Samuel/HTML/aulaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/aula5.htm">tabela 1</a>
-			</li>
-			<li>
-				<a href="file:///C:/Users/Gl%C3%B3ria%20a%20Deus/Documents/Samuel/HTML/aulaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Aul.htm">tabela 2</a>
-			</li>
-		</ol>
-		<h1 style="color:white;">Como jogar</h1>
-		<p style="color:white;">Para você jogar esse jogo primeiro voce tem que saber que em qualquer lugar que clique o jogo se iniciara</p>
-		<p style="color:white;">Segunda coisa pode parecer muita vida que você tem mas ela acaba rapido</p>
-		<p style="color:white;">Ultima atualização 26/01/2022</p>
-		
 	</body>
 </html>
